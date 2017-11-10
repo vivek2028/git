@@ -59,7 +59,8 @@ class Simon:
 			self.parent.after(1000,lambda: self.status.config(text=''))
 			self.pattern+=random.choice('rgby')
 			self.selections=''
-			self.high_score=max(self.high_score,len(self.pattern))			
+			self.high_score=max(self.high_score,len(self.pattern))
+			self.status.config(text=self.high_score)			
 			self.parent.after(5000, lambda: self.status.config(text=''))
 			print(self.high_score)
 			self.parent.after(2000,self.animate)
