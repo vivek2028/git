@@ -24,7 +24,6 @@ class Simon:
 		self.high_score=0
 		self.status=tk.Label(root,text='Prove Your memory power!!')
 		self.status.pack()
-		self.parent.bind('<h>',self.score)
 		self.draw_board()
 	
 	def draw_board(self):
@@ -60,8 +59,7 @@ class Simon:
 			self.parent.after(1000,lambda: self.status.config(text=''))
 			self.pattern+=random.choice('rgby')
 			self.selections=''
-			self.high_score=max(self.high_score,len(self.pattern))
-			self.status.config(text=self.high_score)
+			self.high_score=max(self.high_score,len(self.pattern))			
 			self.parent.after(5000, lambda: self.status.config(text=''))
 			print(self.high_score)
 			self.parent.after(2000,self.animate)
@@ -72,9 +70,7 @@ class Simon:
 			self.high_score=0
 			self.parent.after(2000,self.draw_board)
 			print(self.pattern,self.selections)
-	def score(self,event=None):
-		self.status.config(text=self.high_score)
-		self.parent.after(5000, lambda: self.status.config(text=''))
+		
 root=tk.Tk()
 simon=Simon(root)
 root.mainloop()		
